@@ -1,0 +1,41 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+
+{% if player.id_in_group == 1 %}
+    <p>
+        You had {{Constants.endowment}} from the investor and you sent {{ group.sent_amount }} to P2 leaving you with
+        {{less_endowment}}. The computer either turned this to zero or tripled it for P2. Then P2 returned {{ group.sent_back_amount }} back to you. <p></p>
+
+    </p>
+<b> Therefore, <u> your total payoff for this round  is {{ player.payoff }} </u> </b>
+which is the sum of the {{ group.sent_back_amount }} P2 returned to you plus the {{less_endowment}} you were left with.
+{% else %}
+
+
+<p>
+ <p>
+       You had {{Constants.endowment}} from the investor and P1 sent you some amount which was randomly changed
+    by the computer to become {{random_amount}}.  Therefore you had a total of {{total_random}} in your account.
+    You then sent {{ group.sent_back_amount }} back to P1.
+
+    <p></p>
+
+<b> Therefore, <u> your total payoff for this round  is {{ player.payoff }} </u> </b>
+which is the {{total_random}} you had minus the {{ group.sent_back_amount }} you sent back to P1.
+{% endif %}
+    </p>
+
+
+    </p> <p></p>
+
+
+    </p>
+
+{% next_button %}
+{% endblock %}

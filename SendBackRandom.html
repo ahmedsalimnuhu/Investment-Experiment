@@ -1,0 +1,103 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% block title %}
+Scenario 1: You are playing with an Unknown Partner Within CoP
+{% endblock %}
+
+{% block content %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+
+   {% if player.id_in_group == 2%}
+        <p<b> Decision 3</b> </p>
+
+        {% else %}
+                <p<b> Decision 7</b> </p>
+{% endif %}
+      <p> <h5> <b> Your partner will never know your identity.</b> </h5>
+        <b> <font color="red"> You are P2. You have {{Constants.endowment}} from an investor: </font> </b>
+    </p>
+
+    </div>
+</div>
+
+    <p></p>
+        {% if random_amount != 0 %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <ul>
+            <li> In addition to this {{Constants.endowment}}, the amount you have received from P1 is <font color="blue"> <b> {{random_amount}},</b> </font>
+       </li>
+<li>Therefore, the total money in your account for this round is <font color="red"><b> {{total_random}}, the sum of {{random_amount}} from P1,
+        and {{Constants.endowment}} from the investor. </b> </font>
+     <li>  You can send to P1 either TK.0, {{random_amount}}, or any amount
+           in between TK.0 and {{random_amount}}. Remember you lose whatever you send to P1
+            and it becomes part of P1's money. </li>
+         </li>
+
+        </ul>
+
+    <center> {% formfield group.sent_back_amount %}
+        <p> <b> Reminder: 1 Token is worth 100 Shillings. That is 1TK = 100KSH </b> </p> </center>
+         <!-- Button trigger modal -->
+        <center>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+Click to send selected amount to P1
+</button> </center>
+
+    </div>
+</div>
+      <p></p>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Remember your P1 will never know your identity </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p> Is this your final decision?
+	<tr>
+	<td  id=“lane”></td></p>
+	</tr>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+        <button class="btn btn-primary">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+ {% else %}
+
+ <div class="card bg-light instructions">
+    <div class="card-body">
+<ul>
+    <li><b> In addition, the amount you have received in this round is {{random_amount}}</b> </li>
+       <li> So, the total money in your account for this round is the
+           {{Constants.endowment}}, from the investor. </li>
+
+        <li>   Since you received 0, you can only send 0 back to P1.
+       </li>
+    </ul>
+        {% formfield group.sent_back_amount %}
+        {% next_button %}
+    </div>
+ </div>
+
+ {% endif %}
+
+
+
+
+
+{% endblock %}
+

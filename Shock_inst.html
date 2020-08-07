@@ -1,0 +1,44 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% block title %}
+Scenario 1: You are playing with an Unknown Partner Within CoP
+{% endblock %}
+
+
+{% block content %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+        <p> <h5> Instructions/Rules: Please read carefully </h5> </p>
+ <ul>
+        <li> Under this scenario <font color="blue"> your partner is another CoP member at
+            this meeting, but you will never know each others’ identities. </font> </li>
+     <li> <b> Like the previous game </b> both P1 and P2 each start with {{Constants.endowment}} </li> <p></p>
+      <li> <font color="red"> But in this round, there is a 50-50 chance that the computer will either triple the
+          amount P1 sends to P2, or turn it to 0. </font> Whatever amount P2 receives, P2 will
+          then decide how much of it to send back to P1.
+</li> <p></p>
+
+     <li> <b> If P2 receives 0, P2 will not know whether the computer turned P1’s investment into 0, or
+         whether P1 sent 0 to P2.
+         If P2 receives some positive amount, P2 will know that P1 sent one third of this
+         amount and that the computer tripled the amount P1 sent.
+     </b></li>
+ </ul>
+
+<p></p>
+
+        Please <b> DO NOT CLICK NEXT </b> until the instructor asks you to do so.
+        When instructed,
+        click the next button below.
+
+    <center> {% next_button %} </center>
+    </p>
+   </div>
+</div>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,86 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% block title %}
+Scenario 1: You are playing with an Unknown Partner Within CoP
+{% endblock %}
+
+{% block content %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+   {% if player.id_in_group == 1%}
+        <p<b> Decision 3</b> </p>
+
+        {% else %}
+                <p<b> Decision 7</b> </p>
+        {% endif %}
+      <p> <h5> <b> Your partner will never know your identity.</b> </h5>
+        <b> <font color="red"> You are P1. You have {{Constants.endowment}} from an investor: </font> </b>
+    </p>
+
+    </div>
+</div>
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <h5> <b><u><font color="blue"> QUICK REMINDER of RULES: </font> </u> </b> </h5>  <p></p>
+        <ul>
+<li> As P1, you can send to P2 either TK.0, all of your {{Constants.endowment}}, or any amount in between TK.0
+    and {{Constants.endowment}}. </li>
+<li> 1 Token is worth 100 Shillings. That is 1TK = 100KSH. </li>
+         <b>   <font color="green">  There is a 50-50 chance that the computer will either
+             triple the amount you send to P2, or turn it to 0. </font> Whatever amount P2 receives, P2 will
+             then decide how much of it to send back to you. </b>
+<li> <font color="red"><b> If P2 receives 0, P2 will not know whether the computer turned
+    your investment into 0, or whether you sent 0 to P2.</b> </font>
+</li>
+
+        </ul>
+        <center> {% formfields %}</center>
+   </div>
+</div>
+
+
+               <p></p>
+<!-- Button trigger modal -->
+<center>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Click to send money to P2
+</button>
+</center>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Remember P2 will never know your identity </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p> Is this your final decision?
+	<tr>
+	<td  id=“lane”></td></p>
+	</tr>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+        <button class="btn btn-primary">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+ <script src="{% static "COP_Experiment/Basic.js" %}"></script>
+
+
+
+
+
+{% endblock %}

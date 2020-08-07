@@ -1,0 +1,42 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% block title %}
+Part II: Investment Decisions Under different Scenarios
+{% endblock %}
+
+
+{% block content %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+        <p> <h5> INSTRUCTIONS </h5> </p>
+      <ul>
+          <li> In this part we will ask you to make a number of  decisions about investing
+           money by sending it to a partner.  In each of these decisions, you will either play as
+           Player P1 or Player P2. </li> <p></p>
+<b> <font color="blue">  <li> The investment decisions will be in a currency called “Token” or TK for short.
+    To determine your final payoffs, we will convert each token to KSH 100.
+    In other words, the exchange rate is TK 1 = KSH 100. </li> </font> </b> <p></p>
+<li> For each decision, you will be faced with a unique situation where you will have
+    {{Constants.endowment}} from an investor to support your business. </li> <p></p>
+        <li> Each decision you will be asked to make will be slightly different from any of the other decisions.</li>
+        <li>  The decisions you make will determine your final payoff.</li>
+        <p></p>
+<li> At the end of all the three parts of this study, to determine your payment from Part II,
+    <b> <font> <font color="red"> we will randomly select one of the decisions you would have made either as P1 or P2. </font></u></b> </li> <p></p>
+<li><b> Note that each of these decisions has an equal chance of being selected. So, make
+    every decision carefully. </li> </div>
+
+
+
+          </ul>
+
+   </div>
+</div>
+
+<center>{% next_button %} </center>
+{% endblock %}
+
+
+

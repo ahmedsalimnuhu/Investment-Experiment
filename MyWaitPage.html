@@ -1,0 +1,21 @@
+{% extends 'otree/WaitPage.html' %}
+{% load otree %}
+{% block title %}{{  }}{% endblock %}
+{% block content %}
+
+    <p>
+        {% if player.id_in_group == 1 %}
+        P2 has now received your transfer. Please wait
+        while P2 decides how much to send you back. Once P2 has made the decision,
+        this page will disappear and you will be asked to make another decision under a different scenario.
+    </p>
+    {% else %}
+
+ <p>
+        P1 is now deciding how much money to send you. Once P1 has made their
+     decision, this page will disappear and
+        you will be asked to decide how much you want to send back to them.
+
+    </p>
+{% endif %}
+{% endblock %}

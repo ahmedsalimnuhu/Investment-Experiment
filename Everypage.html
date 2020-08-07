@@ -1,0 +1,15 @@
+
+{% extends "global/Page.html" %}
+{% load otree %}
+
+
+{% block title %}
+Decision Made
+{% endblock %}
+
+{% block content %}
+<p> This interaction has ended. Please note that the next decision is different from the previous one
+    and you may be interacting with a different person. </p><p> Please click next to continue to make a new decision
+</p>
+{% next_button %}
+{% endblock %}

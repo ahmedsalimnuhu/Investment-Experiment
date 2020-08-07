@@ -1,0 +1,109 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% block title %}
+Scenario 1: You are playing with an Unknown Partner Within CoP
+{% endblock %}
+
+{% block content %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+  {% if player.id_in_group == 2%}
+        <p<b> Decision 4</b> </p>
+
+        {% else %}
+                <p<b> Decision 8</b> </p>
+
+        {% endif %}
+
+      <p> <h5> <b> Your partner will never know your identity.</b> </h5>
+        <b> <font color="red"> You are P2. You have {{Constants.endowment}} from an investor: </font> </b>
+    </p>
+
+
+
+    <p></p>
+        {% if tripled_amount != 0 %}
+
+        <ul>
+       <li> In addition to this {{Constants.endowment}}, P1 has sent you {{group.sent_amount}},
+           <b> which has been tripled to become {{tripled_amount}}. So, the
+               total money in your account for this round is {{total_amount}}, which
+               comes from the {{Constants.endowment}}, from the investor and the {{group.sent_amount}},
+               received from P1. </b>
+       </li>
+            <li>In addition, P1 has requested that <b> <font color="purple"> you send him/her
+                {{group.amount_demanded}} out
+                of the {{tripled_amount}} back. </font> </b> But you are not required to send back to
+                P1 the requested amount. You can send back to P1 either TK.0,
+                {{tripled_amount}}, or any amount in between TK.0 and {{tripled_amount}},
+</li>
+            <li> <font color="brown"> <B> If you do not send back to P1 this requested amount of {{group.amount_demanded}}
+                then you may be fined. </B> </font>
+                The computer will flip a coin. If the computer coin lands on heads,
+                P1 receives only what you sent him/her, and you keep the
+                remainder from the {{total_amount}} you now have.
+<li> If the computer coin lands on tails, the computer will send P1 the
+            entire {{group.amount_demanded}} he/she requested from you. </li>
+            <li> In addition, the computer will take <font color="purple"> <b> an extra {{Constants.fine}}
+            from you as a fine. </b></font> <li> <b> This means, you will earn a total of {{less_fine}} = ({{total_amount}}-{{group.amount_demanded}}-{{Constants.fine}} )
+            in this round <u> if the coin lands on tails.</u></b>
+ </li>
+        </ul>
+
+    <center> {% formfield group.sent_back_amount %}
+        <p> <b> Reminder: 1 Token is worth 100 Shillings. That is 1TK = 100KSH </b> </p> </center>
+         <!-- Button trigger modal -->
+        <center>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+Click to send selected amount to P1
+</button> </center>
+
+    </div>
+</div>
+      <p></p>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Remember your P1 will never know your identity </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p> Is this your final decision?
+	<tr>
+	<td  id=“lane”></td></p>
+	</tr>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+        <button class="btn btn-primary">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+ {% else %}
+
+ <div class="card bg-light instructions">
+    <div class="card-body">
+
+
+       For this investment, P1 has sent you 0. So, the total money in your account for this round is
+        {{Constants.endowment}}, from the investor. Since P1 sent you 0, you can only send 0 back to P1.
+
+        {% formfield group.sent_back_amount %}
+        {% next_button %}
+    </div>
+ </div>
+
+ {% endif %}
+
+{% endblock %}
+
+

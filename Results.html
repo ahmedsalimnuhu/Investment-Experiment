@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Session Ends
+{% endblock %}
+
+{% block content %}
+Your decisions and earnings for each of the decisions you made have now been stored. You will be told which round
+has been randomly selected for payment at the end of the entire study.
+<!--
+{% if player.id_in_group == 1 %}
+    <p>
+        You had {{Constants.endowment}} from the investor and you sent {{ group.sent_amount }} to P2 leaving you with
+        {{less_endowment}}.
+        This was tripled for P2 so P2 received {{tripled_amount}}.
+        Then P2 returned {{ group.sent_back_amount }} back to you. <p></p>
+
+<b> Therefore, <u> your total payoff for this round  is {{ player.payoff }} </u> </b>
+which is the sum of the {{ group.sent_back_amount }} P2 returned to you plus the {{less_endowment}} you were left with.
+
+
+    </p>
+{% else %}
+    <p>
+       You had {{Constants.endowment}} from the investor and P1 sent you {{ group.sent_amount }} which was tripled to become {{tripled_amount}}.
+    Therefore you had a total of {{total_amount}} in your account. You then sent {{ group.sent_back_amount }} back to P1.
+    </p>
+<p></p>
+
+<b> Therefore, <u> your total payoff for this round  is {{ player.payoff }} </u> </b>
+which is the {{total_amount}} you had minus the {{ group.sent_back_amount }} you sent back to P1.
+{% endif %}
+
+<p>
+    <b>
+    -->
+
+{% next_button %}
+{% endblock %}
